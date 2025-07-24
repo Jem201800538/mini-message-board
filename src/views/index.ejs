@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ("head") %>
+  <body class="bg-slate-950">
+    <div class="fixed top-4 left-1/2 -translate-x-1/2">
+      <a
+        class="group inline-block rounded-full bg-gradient-to-r from-sky-300 to-sky-500 p-[2px] text-white focus:ring-3 focus:outline-hidden"
+        href="/new"
+      >
+        <span
+          class="block rounded-full px-5 py-2 text-sm font-medium group-hover:bg-transparent"
+        >
+          Send message
+        </span>
+      </a>
+    </div>
+    <button
+      id="backToTop"
+      class="bg-gray-800 text-xs hidden fixed top-16 left-1/2 -translate-x-1/2 py-2.5 px-4 text-white border-none rounded-full z-1000 transition-opacity opacity-80 hover:opacity-100 cursor-pointer"
+    >
+      ↑ Scroll to Top
+    </button>
+    <button
+      id="latestBtn"
+      class="bg-gray-800 text-xs hidden fixed bottom-4 left-1/2 -translate-x-1/2 py-2.5 px-4 text-white border-none rounded-full z-1000 transition-opacity opacity-80 hover:opacity-100 cursor-pointer"
+    >
+      ↓ Latest message
+    </button>
+    <div class="max-w-md mx-auto p-4 pt-20 pb-8 space-y-4">
+      <% messages.map((message) => { %>
+      <div class="flex items-start gap-2.5">
+        <!-- Avatar -->
+        <div
+          class="relative shrink-0 inline-flex items-center justify-center w-10 h-10 overflow-hidden rounded-full <%= generateColor() %>"
+        >
+          <span class="font-semibold text-white">
+            <%= message.initials %>
+          </span>
+        </div>
+
+        <div class="flex flex-col gap-1 w-full max-w-[350px]">
+          <!-- Name and Date -->
+          <div class="flex items-center space-x-2 rtl:space-x-reverse">
+            <span class="text-sm font-semibold text-white"
+              ><%= message.user %></span
+            >
+            <span class="text-xs text-gray-400"
+              ><%= formatDate(message.createdAt) %></span
+            >
+          </div>
+
+          <!-- Messages -->
+          <div
+            class="max-w-fit leading-1.5 p-4 border-gray-400 rounded-e-xl rounded-es-xl bg-gray-700"
+          >
+            <p class="text-sm text-white wrap-anywhere"><%= message.text %></p>
+          </div>
+          <span class="text-sm text-gray-400">Delivered</span>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+
+    <script type="module" src="/js/index.js"></script>
+  </body>
+</html>
