@@ -6,9 +6,9 @@ A simple web-based message board where users can post and view messages — buil
 
 ## 🔧 Tech Stack
 
-- **Backend:** [Express.js](https://expressjs.com/)  
-- **Frontend Templating:** [EJS](https://ejs.co/)  
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)  
+- **Backend:** [Express.js](https://expressjs.com/)
+- **Frontend Templating:** [EJS](https://ejs.co/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Database:** [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
 
 ---
@@ -27,16 +27,19 @@ A simple web-based message board where users can post and view messages — buil
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/yourusername/mini-message-board.git](https://github.com/Jem201800538/mini-message-board.git)
+   git clone https://github.com/Jem201800538/mini-message-board.git
    cd mini-message-board
    ```
-   
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 3. **Set up environment variables:**
+
+   - Create a .env file in the root directory and add your MongoDB URI:
+
    ```bash
    MONGODB_URI=mongodb+srv://your-connection-string
    PORT=3000
@@ -46,14 +49,13 @@ A simple web-based message board where users can post and view messages — buil
    ```bash
    npx @tailwindcss/cli -i ./src/public/css/index.css -o ./src/public/dist/styles.css --watch
    ```
-   
 5. **Run the server:**
    ```bash
    npm start
    ```
 
 ## 🌐 Usage
-- Open your browser and visit *http://localhost:3000*
+
+- Open your browser and visit _http://localhost:3000_
 - Submit a message using the form
 - See your message appear on the board with a colored avatar
-
