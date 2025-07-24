@@ -49,9 +49,9 @@ A simple web-based message board where users can post and view messages — buil
    ```bash
    npx @tailwindcss/cli -i ./src/public/css/index.css -o ./src/public/dist/styles.css --watch
    ```
-5. **Run the server:**
+5. **Run the development server:**
    ```bash
-   npm start
+   npm run dev
    ```
 
 ## 🌐 Usage
