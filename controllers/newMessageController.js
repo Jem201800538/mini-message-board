@@ -9,7 +9,7 @@ export const newMessageController = {
   post: async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).render("newMessage", {
+      return res.render("newMessage", {
         title: "New Message",
         errors: errors.array(),
         data: req.body,
