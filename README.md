@@ -6,7 +6,7 @@ A simple web-based message board where users can post and view messages — buil
 
 ## 🔧 Tech Stack
 
-- **Backend:** [Express.js](https://expressjs.com/)
+- **Backend:** [Express.js](https://expressjs.com/) with [express-validator](https://express-validator.github.io/docs)
 - **Frontend Templating:** [EJS](https://ejs.co/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Database:** [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
@@ -15,11 +15,10 @@ A simple web-based message board where users can post and view messages — buil
 
 ## 🚀 Features
 
-- Post a new message with initials and timestamp
-- Messages are stored in MongoDB
 - Clean, responsive UI styled with Tailwind CSS
 - Server-side rendering using EJS templates
 - Random avatar background color per message
+- Error toast notification
 
 ---
 
@@ -47,7 +46,7 @@ A simple web-based message board where users can post and view messages — buil
 
 4. **Compile Tailwind CSS**
    ```bash
-   npx @tailwindcss/cli -i ./src/public/css/index.css -o ./src/public/dist/styles.css --watch
+   npx @tailwindcss/cli -i ./public/css/index.css -o ./public/dist/styles.css --watch
    ```
 5. **Run the development server:**
    ```bash

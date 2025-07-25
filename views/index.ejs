@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include ("head") %>
+  <%- include ("partials/head") %>
   <body class="bg-slate-950">
     <div class="fixed top-4 left-1/2 -translate-x-1/2">
       <a
-        class="group inline-block rounded-full bg-gradient-to-r from-sky-300 to-sky-500 p-[2px] text-white focus:ring-3 focus:outline-hidden"
+        class="transition-all animate-float glow-effect inline-block rounded-full bg-gradient-to-r from-sky-600 to-slate-600 text-white focus:outline-hidden"
         href="/new"
       >
         <span
-          class="block rounded-full px-5 py-2 text-sm font-medium group-hover:bg-transparent"
+          class="block rounded-full px-5 py-2 text-sm font-medium text-glow"
         >
           Send message
         </span>
@@ -16,13 +16,13 @@
     </div>
     <button
       id="backToTop"
-      class="bg-gray-800 text-xs hidden fixed top-16 left-1/2 -translate-x-1/2 py-2.5 px-4 text-white border-none rounded-full z-1000 transition-opacity opacity-80 hover:opacity-100 cursor-pointer"
+      class="bg-gray-800 text-xs hidden fixed top-16 left-1/2 -translate-x-1/2 py-1.5 px-3.5 text-white border-none rounded-full z-1000 transition-opacity opacity-80 hover:opacity-100 cursor-pointer"
     >
       ↑ Scroll to Top
     </button>
     <button
       id="latestBtn"
-      class="bg-gray-800 text-xs hidden fixed bottom-4 left-1/2 -translate-x-1/2 py-2.5 px-4 text-white border-none rounded-full z-1000 transition-opacity opacity-80 hover:opacity-100 cursor-pointer"
+      class="bg-gray-800 text-xs hidden fixed bottom-4 left-1/2 -translate-x-1/2 py-1.5 px-3.5 text-white border-none rounded-full z-1000 transition-opacity opacity-80 hover:opacity-100 cursor-pointer"
     >
       ↓ Latest message
     </button>

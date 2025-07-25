@@ -1,0 +1,63 @@
+<!-- Toast notification -->
+
+<% if (locals.errors && locals.errors.length > 0) { %>
+<div
+  id="toast-root"
+  class="fixed top-4 left-1/2 md:left-auto md:right-4 -translate-x-1/2 md:translate-x-0 z-50 w-full max-w-sm flex justify-center md:justify-end"
+>
+  <div
+    id="toast"
+    class="w-full flex flex-col gap-2 text-white rounded-lg shadow-lg animate-slide-up backdrop-blur-sm"
+  >
+    <% errors.forEach((error) => { %>
+    <div
+      class="toast-item px-4 py-3.5 rounded-lg shadow-md text-sm flex items-center gap-2 bg-gradient-to-r from-red-500 via-red-400 to-red-600"
+    >
+      <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+        <path
+          d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+        />
+      </svg>
+      <span><%= error.msg %></span>
+    </div>
+    <% }); %>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const root = document.getElementById("toast-root");
+      const toastContainer = document.getElementById("toast");
+
+      if (!root || !toastContainer) return;
+
+      const handleToast = (toast) => {
+        let hideTimeout;
+
+        const hide = () => {
+          toast.classList.add("transition", "duration-300");
+          toast.style.transform = "translateX(100%)";
+          toast.style.opacity = 0;
+
+          // Clean up after animation
+          setTimeout(() => {
+            toast.remove();
+            if (!toastContainer.querySelector(".toast-item")) {
+              root.remove();
+            }
+          }, 300);
+        };
+
+        hideTimeout = setTimeout(hide, 3000);
+
+        toast.addEventListener("mouseenter", () => clearTimeout(hideTimeout));
+        toast.addEventListener("mouseleave", () => {
+          hideTimeout = setTimeout(hide, 2000);
+        });
+      };
+
+      // Attach to all current toasts
+      const toasts = toastContainer.querySelectorAll(".toast-item");
+      toasts.forEach(handleToast);
+    });
+  </script>
+</div>
+<% } %>
