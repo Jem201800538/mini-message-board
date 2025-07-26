@@ -40,3 +40,68 @@
     transform: translateY(-3px);
   }
 }
+
+/* Card */
+.card {
+  box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01),
+    0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09),
+    0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 17px 17px 27px 27px;
+}
+
+.title::after {
+  content: "";
+  width: 8ch;
+  height: 1px;
+  position: absolute;
+  bottom: -1px;
+  background-color: #99a2b1;
+}
+
+#avatar::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  position: absolute;
+  right: 1px;
+  bottom: 2px;
+  border-radius: 50%;
+  background-color: #0fc45a;
+  border: 2px solid #ffffff;
+}
+
+.box-container {
+  border-radius: 8px 8px 21px 21px;
+}
+
+.formatting {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto 1fr;
+}
+
+.formatting button {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 0;
+  outline: none;
+}
+
+.formatting button:hover {
+  background-color: #62748e;
+}
+
+.formatting .send {
+  width: 30px;
+  height: 30px;
+  background-color: #0a84ff;
+  margin: 0 0 0 auto;
+}
+
+.formatting .send:hover {
+  background-color: #026eda;
+}
