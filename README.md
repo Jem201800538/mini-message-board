@@ -6,7 +6,7 @@ A simple web-based message board where users can post and view messages — buil
 
 ## 🔧 Tech Stack
 
-- **Backend:** [Express.js](https://expressjs.com/) with [express-validator](https://express-validator.github.io/docs)
+- **Backend:** [Express.js](https://expressjs.com/) with [express-validator](https://express-validator.github.io/docs) and [express-session](https://github.com/expressjs/session)
 - **Frontend Templating:** [EJS](https://ejs.co/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Database:** [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
@@ -37,11 +37,12 @@ A simple web-based message board where users can post and view messages — buil
 
 3. **Set up environment variables:**
 
-   - Create a .env file in the root directory and add your MongoDB URI:
+   - Create a .env file in the root directory and add your environment variables:
 
    ```bash
-   MONGODB_URI=mongodb+srv://your-connection-string
+   MONGODB_URI='mongodb+srv://your-connection-string'
    PORT=3000
+   SESSION_SECRET='YOUR SECRET'
    ```
 
 4. **Compile Tailwind CSS**
