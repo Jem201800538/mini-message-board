@@ -16,6 +16,10 @@ const __dirname = path.dirname(__filename);
 const app = express();
 connectToMongoDB();
 
+if (process.env.NODE_ENV === "production") {
+  app.set("trust proxy", 1);
+}
+
 app.use(logger);
 app.use(sessionConfig);
 app.use(express.urlencoded({ extended: true }));
