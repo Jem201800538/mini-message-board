@@ -7,7 +7,7 @@ const uri = process.env.MONGODB_URI;
 const clientOptions = {
   serverApi: { version: "1", strict: true, deprecationErrors: true },
 };
-async function connect() {
+async function connectToMongoDB() {
   try {
     await mongoose.connect(uri, {
       ...clientOptions,
@@ -19,4 +19,4 @@ async function connect() {
   }
 }
 
-export default connect;
+export default connectToMongoDB;

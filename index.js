@@ -1,10 +1,11 @@
 import url from "url";
 import path from "path";
 import express from "express";
-import connect from "./models/connection.js";
+import connectToMongoDB from "./configs/db.js";
 import { indexRouter } from "./routes/index.js";
 import { logger } from "./middlewares/logger.js";
 import { formatDate } from "./utils/formatDate.js";
+import { sessionConfig } from "./configs/session.js";
 import { generateColor } from "./utils/generateColor.js";
 import { newMessageRouter } from "./routes/newMessage.js";
 
@@ -13,13 +14,16 @@ const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-connect(); // MongoDB connection
+connectToMongoDB();
 
 app.use(logger);
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, "public")));
+app.use(sessionConfig);
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 app.locals.formatDate = formatDate;
 app.locals.generateColor = generateColor;
 
