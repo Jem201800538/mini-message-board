@@ -7,12 +7,13 @@
     class="title relative flex w-full h-[50px] items-center pl-5 border-b border-b-gray-600 font-bold text-sm text-white"
     >Message</span
   >
+  {{ form.hidden_tag() }}
   <div class="p-5">
     <div class="flex flex-col gap-4 p-0 m-0">
       <div class="flex gap-2 items-center">
         <div
           id="avatar"
-          class="relative shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-full <%= generateColor() %>"
+          class="relative shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-full {{ generate_color() }}"
         >
           <span class="font-semibold text-white"></span>
         </div>
@@ -24,7 +25,7 @@
             spellcheck="false"
             placeholder="Enter your name here..."
             autocomplete="off"
-            value="<%= locals.data?.name || user || '' %>"
+            value="{{ user }}"
             class="block w-full py-1.5 focus:ring-0 focus:outline-none placeholder-gray-400 placeholder:font-normal font-bold text-sm text-slate-200"
           />
           <p id="date-time" class="font-semibold text-xs text-[#acaeb4]"></p>
@@ -42,8 +43,8 @@
         autofocus
         placeholder="Write a message..."
       >
-<%= locals.data?.text %></textarea
-      >
+{{ text }}
+      </textarea>
       <div class="formatting mt-4">
         <button type="button" class="transition-colors hover:bg-slate-500">
           <svg

@@ -1,6 +1,9 @@
 <!-- Toast notification -->
 
-<% if (locals.errors && locals.errors.length > 0) { %>
+<!-- prettier-ignore -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+
 <div
   id="toast-root"
   class="fixed top-4 left-1/2 md:left-auto md:right-4 -translate-x-1/2 md:translate-x-0 z-50 w-full max-w-sm flex justify-center md:justify-end"
@@ -9,18 +12,22 @@
     id="toast"
     class="w-[95%] sm:w-full flex flex-col gap-2 text-white rounded-lg shadow-lg animate-slide-up backdrop-blur-sm"
   >
-    <% errors.forEach((error) => { %>
+    {% for category, message in messages %}
     <div
-      class="toast-item px-4 py-3.5 rounded-lg shadow-md text-sm flex items-center gap-2 border border-red-900"
+      class="toast-item px-4 py-3.5 rounded-lg shadow-md text-sm flex items-center gap-2 border border-red-500"
     >
-      <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+      <svg
+        class="w-4 h-4 shrink-0 text-red-300"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+      >
         <path
           d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
         />
       </svg>
-      <span><%= error.msg %></span>
+      <span class="text-red-300">{{ message }}</span>
     </div>
-    <% }); %>
+    {% endfor %}
   </div>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -60,4 +67,7 @@
     });
   </script>
 </div>
-<% } %>
+
+<!-- prettier-ignore -->
+{% endif %} 
+{% endwith %}
