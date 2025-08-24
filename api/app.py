@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import Flask, flash, redirect, render_template,  session, url_for
 from flask_cors import CORS
 from flask_restful import Api
@@ -48,7 +50,8 @@ def new_message():
         new_message = {
             "user": name,
             "text": text,
-            "initials": get_initials(name)
+            "initials": get_initials(name),
+            "createdAt": datetime.now()
         }
 
         success = post_message(new_message)
