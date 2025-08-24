@@ -1,6 +1,8 @@
 from flask import Flask, flash, redirect, render_template,  session, url_for
 from flask_cors import CORS
 from flask_restful import Api
+from flask_session import Session
+from pymongo import ASCENDING
 from api.configs import Configs
 from api.middlewares.validate_form import NewMessageForm
 from api.services.message_service import MessageService
@@ -13,8 +15,16 @@ app.config.from_object(Configs)
 app.jinja_env.globals.update(format_date=format_date)
 app.jinja_env.globals.update(generate_color=generate_color)
 
+Session(app)
 CORS(app)
 api = Api(app)
+
+db = app.config["SESSION_MONGODB"][app.config["SESSION_MONGODB_DB"]]
+collection = db[app.config["SESSION_MONGODB_COLLECT"]]
+collection.create_index(
+    [("expiration", ASCENDING)], 
+    expireAfterSeconds=0
+)
 
 api.add_resource(MessageService, "/api/messages")
 
