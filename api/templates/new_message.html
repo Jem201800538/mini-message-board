@@ -1,28 +1,20 @@
-<!-- prettier-ignore -->
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% block title %}{{ title }}{% endblock %}
 
 {% block main %}
 
-<div class="fixed top-4 left-1/2 -translate-x-1/2">
-  <a
-    class="transition-all animate-float glow-effect inline-block rounded-full bg-gradient-to-r from-sky-600 to-slate-600 text-white focus:outline-hidden"
-    href="/"
-  >
-    <span
-      class="block rounded-full px-3.5 md:px-5 py-2 text-glow text-sm font-medium"
-    >
-      <strong class="md:mr-2">←</strong> Back to messages
-    </span>
-  </a>
-</div>
+    <div class="fixed top-4 left-1/2 -translate-x-1/2">
+        <a class="transition-all animate-float glow-effect inline-block rounded-full bg-gradient-to-r from-sky-600 to-slate-600 text-white focus:outline-hidden" href="/">
+            <span class="block rounded-full px-3.5 md:px-5 py-2 text-glow text-sm font-medium">
+                <strong class="md:mr-2">←</strong> Back to messages
+            </span>
+        </a>
+    </div>
 
-<!-- prettier-ignore -->
-<div class="max-w-md mx-auto my-20">
-    {% include "partials/card.html" %}
-</div>
+    <div class="max-w-md mx-auto my-20">
+        {% include "partials/card.html" %}
+    </div>
 
-<!-- prettier-ignore -->
-<!-- {% include "partials/toast.html" %} -->
+    {% include "partials/toast.html" %}
 
 {% endblock %}

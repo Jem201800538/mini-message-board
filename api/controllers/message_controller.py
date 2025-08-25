@@ -9,6 +9,15 @@ def get_all_messages():
     except Exception as e:
         logging.error(f"Error retrieving messages: {e}")
         return []
+    
+def get_all_pinned_messages():
+    message_model = MessageModel()
+    try:
+        pinned_messages = message_model.get_pinned_messages()
+        return pinned_messages
+    except Exception as e:
+        logging.error(f"Error retrieving pinned messages: {e}")
+        return []
 
 def post_message(msg):
     message_model = MessageModel()

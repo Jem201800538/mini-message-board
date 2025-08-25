@@ -1,0 +1,61 @@
+{% if pinned_messages|length > 0 %}
+    <button id="pinnedBtn" class="fixed bottom-6 right-6 w-12 h-12 bg-yellow-500 hover:bg-yellow-600 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110 cursor-pointer">
+        <svg class="text-gray-900 h-5 w-5 rotate-45" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pin-icon lucide-pin">
+            <path d="M12 17v5" />
+            <path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z" />
+        </svg>
+        <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-semibold">
+            {{ pinned_messages|length }}
+        </span>
+    </button>
+{% endif %}
+
+<div id="chatBox" class="fixed inset-0 bg-black/50 items-end justify-end p-6 z-999 hidden">
+    <div class="bg-gray-800 rounded-lg shadow-2xl w-100 max-h-110 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+        <div class="flex items-center justify-between p-4 border-b border-gray-700">
+            <div class="flex items-center gap-2">
+                <svg class="text-yellow-500 h-5 w-5 block ml-auto rotate-45" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pin-icon lucide-pin">
+                    <path d="M12 17v5" />
+                    <path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z" />
+                </svg>
+                <h3 class="font-semibold text-white">Pinned Messages</h3>
+                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                    {{ pinned_messages|length }}
+                </span>
+            </div>
+            <button id="closeChat" class="text-gray-400 hover:text-white transition-colors">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x">
+                    <path d="M18 6 6 18" />
+                    <path d="m6 6 12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <div class="p-4 max-h-94 overflow-y-auto space-y-6">
+            {% for message in pinned_messages %}
+                <div class="flex items-start gap-2.5">
+                    <div class="flex flex-col gap-2.5 w-full max-w-[350px]">
+                        <div class="flex items-center gap-2.5">
+                            <div class="shrink-0 inline-flex items-center justify-center w-10 h-10 rounded-full {{ generate_color() }} ">
+                                <span class="font-semibold text-white">{{ message.initials }}</span>
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <span class="text-sm font-semibold text-white flex items-center">{{ message.user }}
+                                    <svg class="h-4 w-4 text-teal-500 ml-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
+                                        <path d="m9 12 2 2 4-4" />
+                                    </svg>
+                                </span>
+                                <span class="text-xs text-gray-400">{{ format_date(message.createdAt) }}</span>
+                            </div>
+                        </div>
+
+                        <div class="ml-2 max-w-fit leading-1.5 p-4 border-gray-400 rounded-e-xl rounded-es-xl bg-gray-700">
+                            <p class="text-sm text-white whitespace-pre-line">{{ message.text }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

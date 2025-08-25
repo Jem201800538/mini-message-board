@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="{{ url_for('static', filename='favicon.ico') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='dist/styles.css') }}"
-    />
-    <title>{% block title %}{% endblock %}</title>
-  </head>
-  <body class="bg-slate-950">
-    {% block main %}{% endblock %}
-  </body>
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='dist/styles.css') }}" />
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="title" content="Mini Message Board" />
+        <meta name="description" content="A simple and fun mini message board for posting and sharing thoughts." />
+        <meta name="author" content="Developed by Jemuel Repoylo" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://mini-message-board-indol-ten.vercel.app/" />
+        <meta property="og:title" content="Mini Message Board" />
+        <meta property="og:description" content="A simple and fun mini message board for posting and sharing thoughts." />
+        <meta property="og:image" content="https://mini-message-board-indol-ten.vercel.app/static/og-image.png" />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://mini-message-board-indol-ten.vercel.app/" />
+        <meta property="twitter:title" content="Mini Message Board" />
+        <meta property="twitter:description" content="A simple and fun mini message board for posting and sharing thoughts." />
+        <meta property="twitter:image" content="https://mini-message-board-indol-ten.vercel.app/static/og-image.png" />
+    </head>
+
+    <body class="bg-slate-950">
+        {% block main %}{% endblock %}
+    </body>
+
 </html>

@@ -9,7 +9,7 @@ from api.configs import Configs
 from api.middlewares.validate_form import NewMessageForm
 from api.services.message_service import MessageService
 from api.utils import format_date, generate_color, get_initials
-from api.controllers.message_controller import get_all_messages, post_message
+from api.controllers.message_controller import get_all_messages, get_all_pinned_messages, post_message
 
 app = Flask(__name__)
 app.config.from_object(Configs)
@@ -33,10 +33,12 @@ api.add_resource(MessageService, "/api/messages")
 @app.route("/")
 def index():
     messages = get_all_messages()
+    pinned_messages = get_all_pinned_messages()
     return render_template(
         "index.html", 
         title="Mini Message Board", 
-        messages=messages
+        messages=messages,
+        pinned_messages=pinned_messages
     )
 
 @app.route("/new", methods=["GET", "POST"])
@@ -50,8 +52,9 @@ def new_message():
         new_message = {
             "user": name,
             "text": text,
-            "initials": get_initials(name),
-            "createdAt": datetime.now()
+            "is_pinned": False,
+            "createdAt": datetime.now(),
+            "initials": get_initials(name)
         }
 
         success = post_message(new_message)

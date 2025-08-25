@@ -17,6 +17,16 @@ class MessageModel():
         except Exception as e:
             raise Exception(f"Unable to retrieve messages: {e}")
         
+    def get_pinned_messages(self):
+        try:
+            pinned_messages = list(self.collection
+                                   .find({ "is_pinned": True })
+                                   .sort({ "createdAt": -1 })
+                            )
+            return pinned_messages
+        except Exception as e:
+            raise Exception(f"Unable to retrieve pinned messages: {e}")
+        
     def add_message(self, message: Dict[str, Any]):
         try:
             result = self.collection.insert_one(message)
